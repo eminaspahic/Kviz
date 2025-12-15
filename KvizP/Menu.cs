@@ -28,6 +28,8 @@ namespace KvizP
 
                         case 2:
                             Console.WriteLine("Multiplayer");
+                            var multiplayer = new Multiplayer();
+                            multiplayer.Play();
                             break;
 
                         case 3:

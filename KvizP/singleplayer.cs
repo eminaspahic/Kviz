@@ -28,9 +28,7 @@ namespace KvizP
                 {
                     Console.WriteLine(option);
                 }
-                Console.Write("Your answer: ");
-                string playerAnswer = Console.ReadLine();
-                playerAnswer = playerAnswer.Trim().ToUpper();
+                string playerAnswer;
                 while (true)
                 {
                     Console.Write("Your answer (A, B, C): ");
