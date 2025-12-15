@@ -11,17 +11,38 @@ namespace KvizP
             Console.WriteLine("KVIZ ZNANJA");
             Console.WriteLine("1. Singleplayer");
             Console.WriteLine("2. Multiplayer");
+            Console.WriteLine("3. Scoreboard");
+            Console.WriteLine("4. Exit");
             while (true)
             {
                 try
                 {
                     int input = int.Parse(Console.ReadLine());
-                    if (input==1||input==2)
+                    switch (input)
                     {
-                        return input;
+                        case 1: 
+                            Console.WriteLine("Singleplayer");
+                            var singleplayer = new Singleplayer();
+                            singleplayer.Play();  
+                            break;
+
+                        case 2:
+                            Console.WriteLine("Multiplayer");
+                            break;
+
+                        case 3:
+                            Console.WriteLine("Scoreboard");
+                            //scoreboard
+                            break;
+
+                        case 4:
+                            Console.WriteLine("Kraj");
+                            return 0;
+
+                        default:
+                            Console.WriteLine("Pogresan unos!");
+                            break;
                     }
-                    else
-                        Console.WriteLine("Unesite 1 ili 2.");
                 }
                 catch
                 {

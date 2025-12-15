@@ -1,0 +1,48 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace KvizP
+{
+    internal class Pitanja
+    {
+        public List<string>Questions{ get; set; }
+        public List<string[]> Answers { get; set; }
+        public List<string> CorrectAnswers { get; set; }
+        public Pitanja()
+        {
+            Questions = new List<string>();
+            Answers = new List<string[]>();
+            CorrectAnswers = new List<string>();
+
+            Questions.Add("Koji je glavni grad Francuske?");
+            Answers.Add(new string[] { "A) Pariz", "B) Rim", "C) Berlin" });
+            CorrectAnswers.Add("A");
+
+            Questions.Add("What is the capital of France?");
+            Answers.Add(new string[] { "A) London", "B) Berlin", "C) Paris" });
+            CorrectAnswers.Add("C");
+        }
+
+        public int GetRandomQuestion(List<int> usedIndexes)
+        {
+            Random random = new Random();
+            int index;
+
+            do
+            {
+                index = random.Next(0, Questions.Count);
+            }
+            while (usedIndexes.Contains(index));
+
+            return index;
+        }
+
+        public bool CheckAnswer(int questionIndex, string playerAnswer)
+        {
+            playerAnswer = playerAnswer.Trim().ToUpper();
+
+            return playerAnswer == CorrectAnswers[questionIndex];
+        }
+    }
+}
