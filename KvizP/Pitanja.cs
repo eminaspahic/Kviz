@@ -6,22 +6,14 @@ namespace KvizP
 {
     internal class Pitanja
     {
-        public List<string>Questions{ get; set; }
+        public List<string> Questions { get; set; }
         public List<string[]> Answers { get; set; }
         public List<string> CorrectAnswers { get; set; }
         public Pitanja()
         {
-            Questions = new List<string>();
-            Answers = new List<string[]>();
-            CorrectAnswers = new List<string>();
-
-            Questions.Add("Koji je glavni grad Francuske?");
-            Answers.Add(new string[] { "A) Pariz", "B) Rim", "C) Berlin" });
-            CorrectAnswers.Add("A");
-
-            Questions.Add("What is the capital of France?");
-            Answers.Add(new string[] { "A) London", "B) Berlin", "C) Paris" });
-            CorrectAnswers.Add("C");
+            Questions = PitanjaSt.GetQuestions();
+            Answers = PitanjaSt.GetAnswers();
+            CorrectAnswers = PitanjaSt.GetCorrectAnswers();
         }
 
         public int GetRandomQuestion(List<int> usedIndexes)

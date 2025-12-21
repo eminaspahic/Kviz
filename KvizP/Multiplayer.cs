@@ -50,6 +50,7 @@ namespace KvizP
                 else
                     Console.WriteLine("Wrong!");
 
+
                 int index2 = pitanja.GetRandomQuestion(usedIndexes);
                 usedIndexes.Add(index2);
 
