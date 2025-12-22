@@ -17,7 +17,7 @@ namespace KvizP
         }
         public void Play()
         {
-            Console.Write("\nEnter your name: ");
+            Console.Write("\nUnesite vaše ime: ");
             string name = Console.ReadLine();
             if (string.IsNullOrEmpty(name))
             {
@@ -59,15 +59,15 @@ namespace KvizP
                 {
                     Console.WriteLine("Netačno!");
                 }
-
+                Console.WriteLine();
 
             }
             Console.WriteLine("Konačni rezltat je:" + score.Points);
             score.Save();
 
-            Console.Write("\nPlay again? (Y/N): ");
+            Console.Write("\nIgrati ponovo (D/N): ");
             string response = Console.ReadLine().Trim().ToUpper();
-            if (response == "Y")
+            if (response == "D")
             {
                 Play();
             }

@@ -18,9 +18,9 @@ namespace KvizP
 
         public void Play()
         {
-            Console.Write("\nPlayer 1 name: ");
+            Console.Write("\nIme igrača 1: ");
             string name1 = Console.ReadLine();
-            Console.Write("Player 2 name: ");
+            Console.Write("Ime igrača 2: ");
             string name2 = Console.ReadLine();
 
             if (string.IsNullOrEmpty(name1) || string.IsNullOrEmpty(name2) || name1 == name2)
@@ -106,9 +106,9 @@ namespace KvizP
             score1.Save();
             score2.Save();
 
-            Console.Write("\nPlay again? (Y/N): ");
+            Console.Write("\nIgrati ponovo? (D/N): ");
             string response = Console.ReadLine().Trim().ToUpper();
-            if (response == "Y")
+            if (response == "D")
             {
                 Play();
             }
