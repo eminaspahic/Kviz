@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks.Sources;
 
 namespace KvizP
 {
@@ -16,7 +17,16 @@ namespace KvizP
         }
         public void Play()
         {
+            Console.Write("\nEnter your name: ");
+            string name = Console.ReadLine();
+            if (string.IsNullOrEmpty(name))
+            {
+                Console.WriteLine("Unesite tačno ime");
+                return;
+            }
+            Score score = new Score(name, "Singleplayer");
             string[] validOptions = { "A", "B", "C" };
+
             for (int i = 0; i < 7; i++)
             {
                 int index = pitanja.GetRandomQuestion(usedIndexes);
@@ -31,23 +41,39 @@ namespace KvizP
                 string playerAnswer;
                 while (true)
                 {
-                    Console.Write("Your answer (A, B, C): ");
+                    Console.Write("Vaš odgovor (A, B, C): ");
                     playerAnswer = Console.ReadLine().Trim().ToUpper();
 
                     if (validOptions.Contains(playerAnswer))
                         break;
                     else
-                        Console.WriteLine("Invalid input! Try again.");
+                        Console.WriteLine("Pogrešan unos! Pokušaj ponovo.");
                 }
 
                 if (pitanja.CheckAnswer(index, playerAnswer))
                 {
-                    Console.WriteLine("Correct!");
+                    Console.WriteLine("Tačno!");
+                    score.AddPoint();
                 }
                 else
                 {
-                    Console.WriteLine("Wrong!");
+                    Console.WriteLine("Netačno!");
                 }
+
+
+            }
+            Console.WriteLine("Konačni rezltat je:" + score.Points);
+            score.Save();
+
+            Console.Write("\nPlay again? (Y/N): ");
+            string response = Console.ReadLine().Trim().ToUpper();
+            if (response == "Y")
+            {
+                Play();
+            }
+            else
+            {
+                return;
             }
         }
     }

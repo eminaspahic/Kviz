@@ -8,13 +8,14 @@ namespace KvizP
     {
         public static int Odabir()
         {
+            while (true)
+            {
             Console.WriteLine("KVIZ ZNANJA");
             Console.WriteLine("1. Singleplayer");
             Console.WriteLine("2. Multiplayer");
             Console.WriteLine("3. Scoreboard");
             Console.WriteLine("4. Exit");
-            while (true)
-            {
+           
                 try
                 {
                     int input = int.Parse(Console.ReadLine());
@@ -34,7 +35,19 @@ namespace KvizP
 
                         case 3:
                             Console.WriteLine("Scoreboard");
-                            //scoreboard
+                            if (Score.AllScores.Count == 0)
+                            {
+                                Console.WriteLine("\nNo scores yet!");
+                            }
+                            else
+                            {
+                                Console.WriteLine("\n=== SCOREBOARD ===");
+                                foreach (var score in Score.AllScores)
+                                {
+                                    Console.WriteLine($"{score.PlayerName}: {score.Points}/7 ({score.Mode})");
+                                }
+                            }
+                            return 0;
                             break;
 
                         case 4:
