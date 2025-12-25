@@ -5,17 +5,10 @@ using System.Threading.Tasks.Sources;
 
 namespace KvizP
 {
-    internal class Singleplayer
+    internal class Singleplayer:Mod
     {
-        private List<int> usedIndexes = new List<int>();
-        private Pitanja pitanja;
-
-        public Singleplayer()
-        {
-            pitanja = new Pitanja();
-            usedIndexes = new List<int>();
-        }
-        public void Play()
+       
+        public override void Play()//sada je override
         {
             Console.Write("\nUnesite vaše ime: ");
             string name = Console.ReadLine();
@@ -25,43 +18,12 @@ namespace KvizP
                 return;
             }
             Score score = new Score(name, "Singleplayer");
-            string[] validOptions = { "A", "B", "C" };
 
             for (int i = 0; i < 7; i++)
             {
-                int index = pitanja.GetRandomQuestion(usedIndexes);
-                usedIndexes.Add(index);
-                Console.WriteLine("Pitanje " + (i + 1) + ".");
-                Console.WriteLine(pitanja.Questions[index]);
-
-                foreach (string option in pitanja.Answers[index])
-                {
-                    Console.WriteLine(option);
-                }
-                string playerAnswer;
-                while (true)
-                {
-                    Console.Write("Vaš odgovor (A, B, C): ");
-                    playerAnswer = Console.ReadLine().Trim().ToUpper();
-
-                    if (validOptions.Contains(playerAnswer))
-                        break;
-                    else
-                        Console.WriteLine("Pogrešan unos! Pokušaj ponovo.");
-                }
-
-                if (pitanja.CheckAnswer(index, playerAnswer))
-                {
-                    Console.WriteLine("Tačno!");
-                    score.AddPoint();
-                }
-                else
-                {
-                    Console.WriteLine("Netačno!");
-                }
-                Console.WriteLine();
-
+                AskQuestion(score, name, i + 1);
             }
+            Console.Clear();
             Console.WriteLine("Konačni rezltat je:" + score.Points);
             score.Save();
 

@@ -22,32 +22,37 @@ namespace KvizP
                     switch (input)
                     {
                         case 1: 
-                            Console.WriteLine("Singleplayer");
+                            
                             var singleplayer = new Singleplayer();
-                            singleplayer.Play();  
+                            Console.Clear();
+                            Console.WriteLine("Singleplayer");
+                            singleplayer.Play();
                             break;
 
                         case 2:
-                            Console.WriteLine("Multiplayer");
                             var multiplayer = new Multiplayer();
+                            Console.Clear();
+                            Console.WriteLine("Multiplayer");
                             multiplayer.Play();
                             break;
 
                         case 3:
+                            Console.Clear();
                             Console.WriteLine("Scoreboard");
                             if (Score.AllScores.Count == 0)
                             {
-                                Console.WriteLine("\nNo scores yet!");
+                                
+                                Console.WriteLine("\nNema rezultata!");
                             }
                             else
                             {
-                                Console.WriteLine("\n=== SCOREBOARD ===");
+                                Console.WriteLine("\n SCOREBOARD");
                                 foreach (var score in Score.AllScores)
                                 {
-                                    Console.WriteLine($"{score.PlayerName}: {score.Points}/7 ({score.Mode})");
+                                    Console.WriteLine(score.PlayerName + ": " + score.Points + "/7 (" + score.Mode + ")");
                                 }
                             }
-                            return 0;
+                            
                             break;
 
                         case 4:
@@ -59,9 +64,9 @@ namespace KvizP
                             break;
                     }
                 }
-                catch
+                catch(Exception ex)
                 {
-                    Console.WriteLine("Pogrešan unos.");
+                    Console.WriteLine("Pogrešan unos."+ex.Message);
                 }
             }
         }
